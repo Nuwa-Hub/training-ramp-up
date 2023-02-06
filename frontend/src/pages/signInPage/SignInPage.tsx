@@ -67,9 +67,19 @@ export const SignInPage = (): JSX.Element => {
     }
   }, [])
 
-const handleGoogleLogin = () => {
-  window.open("http://localhost:5000/api/users/google", "_self")
-}
+  const handleGoogleLogin = () => {
+    window.open('http://localhost:5000/api/users/google', '_self')
+  }
+  const getUser = () => {
+    void fetch('http://localhost:5000/api/users/logout', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      } as any,
+    })
+  }
 
   return (
     <>
@@ -81,13 +91,25 @@ const handleGoogleLogin = () => {
             <h1>Create Account</h1>
             <div className='social-container'>
               <a onClick={handleGoogleLogin} className='social'>
-               <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/119930_google_512x512.png?alt=media&token=1428c2df-d8d8-4c55-91d8-8b133465d2a0" alt="Google Icon"></img>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/119930_google_512x512.png?alt=media&token=1428c2df-d8d8-4c55-91d8-8b133465d2a0'
+                  alt='Google Icon'
+                ></img>
+              </a>
+              <a onClick={getUser} className='social'>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/984f500cf9de4519b02b354346eb72e0-facebook-icon-social-media-by-vexels.png?alt=media&token=688568a9-f923-4f0e-af28-da64dbee5046'
+                  alt='Google Icon'
+                ></img>
               </a>
               <a href='#' className='social'>
-                 <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/984f500cf9de4519b02b354346eb72e0-facebook-icon-social-media-by-vexels.png?alt=media&token=688568a9-f923-4f0e-af28-da64dbee5046" alt="Google Icon"></img>
-              </a>
-              <a href='#' className='social'>
-                <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/icon.svg?alt=media&token=ea44f541-57eb-47bb-85b1-c4609c13d25b" alt="Google Icon"></img>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/icon.svg?alt=media&token=ea44f541-57eb-47bb-85b1-c4609c13d25b'
+                  alt='Google Icon'
+                ></img>
               </a>
             </div>
             <span>or use your email for registration</span>
@@ -141,14 +163,26 @@ const handleGoogleLogin = () => {
           <div className='form-div'>
             <h1>Sign in</h1>
             <div className='social-container'>
-             <a href='#' className='social'>
-               <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/119930_google_512x512.png?alt=media&token=1428c2df-d8d8-4c55-91d8-8b133465d2a0" alt="Google Icon"></img>
+              <a href='#' className='social'>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/119930_google_512x512.png?alt=media&token=1428c2df-d8d8-4c55-91d8-8b133465d2a0'
+                  alt='Google Icon'
+                ></img>
               </a>
               <a href='#' className='social'>
-                 <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/984f500cf9de4519b02b354346eb72e0-facebook-icon-social-media-by-vexels.png?alt=media&token=688568a9-f923-4f0e-af28-da64dbee5046" alt="Google Icon"></img>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/984f500cf9de4519b02b354346eb72e0-facebook-icon-social-media-by-vexels.png?alt=media&token=688568a9-f923-4f0e-af28-da64dbee5046'
+                  alt='Google Icon'
+                ></img>
               </a>
               <a href='#' className='social'>
-                <img className='socialIcon' src="https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/icon.svg?alt=media&token=ea44f541-57eb-47bb-85b1-c4609c13d25b" alt="Google Icon"></img>
+                <img
+                  className='socialIcon'
+                  src='https://firebasestorage.googleapis.com/v0/b/dailydiary-96e2f.appspot.com/o/icon.svg?alt=media&token=ea44f541-57eb-47bb-85b1-c4609c13d25b'
+                  alt='Google Icon'
+                ></img>
               </a>
             </div>
             <Formik

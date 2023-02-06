@@ -16,6 +16,7 @@ describe("Student Constroller test", () => {
     res.send = jest.fn().mockReturnThis();
     return res;
   };
+
   describe("Create student controller test", () => {
     const user = {
       PersonID: 3,
@@ -55,6 +56,7 @@ describe("Student Constroller test", () => {
       spyAddStudent.mockRestore();
     });
   });
+
   describe("Update student controller test", () => {
     const user = {
       PersonID: 3,

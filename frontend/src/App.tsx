@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
 import './App.css'
 import { Layout } from './components/layout/Layout'
@@ -9,6 +10,34 @@ import { SignInPage } from './pages/signInPage/SignInPage'
 function App(): JSX.Element {
 
   const allowedRoles = ['admin', 'guest', 'editor']
+
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:5000/api/users/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        }as any,
+      })
+        .then((response:any) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, []);
 
   return (
     <Routes>
