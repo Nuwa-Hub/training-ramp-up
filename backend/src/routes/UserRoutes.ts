@@ -36,7 +36,9 @@ userRouter.get("/logout", function (req, res, next) {
 });
 userRouter.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile"] })
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
 );
 userRouter.get(
   "/google/callback",
