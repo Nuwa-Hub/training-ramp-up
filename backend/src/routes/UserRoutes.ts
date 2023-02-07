@@ -12,7 +12,7 @@ const userRouter = Router();
 userRouter.post("/signup", signUpController);
 userRouter.post("/login", loginController);
 userRouter.get("/refresh", refreshTokenController);
-userRouter.post("/logout", logoutController);
+//userRouter.post("/logout", logoutController);
 userRouter.get("/login/success", (req, res) => {
   if (req.user) {
     res.status(200).json({
@@ -23,11 +23,16 @@ userRouter.get("/login/success", (req, res) => {
     });
   }
 });
-userRouter.get("/logout", (req, res) => {
-  req.logout(() => {
-    console.log("logout");
+
+userRouter.get("/logout", function (req, res, next) {
+  console.log("logout");
+  req.logout(function (err) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.redirect("/");
   });
-  res.redirect("http://localhost:3000/");
 });
 userRouter.get(
   "/google",

@@ -75,9 +75,17 @@ export const SignInPage = (): JSX.Element => {
       method: 'GET',
       credentials: 'include',
       headers: {
+        'Access-Control-Allow-Credentials': true,
         Accept: 'application/json',
         'Content-Type': 'application/json',
       } as any,
+    }).then((res) => {
+      document.cookie.split(';').forEach(function (c) {
+        document.cookie = c
+          .replace(/^ +/, '')
+          .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/')
+      })
+      console.log(res)
     })
   }
 
